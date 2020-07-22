@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainCameraMovement : MonoBehaviour
 {
     public float TurnSpeed = 200f;
+
     private float TurnInputValue;
 
     private Vector3 LocalStartPos;
@@ -21,7 +22,7 @@ public class MainCameraMovement : MonoBehaviour
         TurnInputValue = Input.GetAxis("Horizontal Camera");
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {   
         RoateCamera();
 
@@ -32,7 +33,7 @@ public class MainCameraMovement : MonoBehaviour
 
     private void RoateCamera()
     {
-        transform.RotateAround(transform.parent.position, Vector3.up, -1 * TurnInputValue * TurnSpeed * Time.deltaTime);
+        transform.RotateAround(transform.parent.transform.position, Vector3.up, -1 * TurnInputValue * TurnSpeed * Time.deltaTime);
     }
 
     private void ResetCamera()
